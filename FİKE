@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#0d1020">
+<title>OYUNOYNA.COM – Ücretsiz Online Oyunlar</title>
+<meta name="description" content="OYUNOYNA.COM: XOX, 2 kişilik araba yarışı ve mini oyunlar. Arkadaşınla farklı telefonlardan online oyna!">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+<button id="backBtn" class="icon-btn hidden" aria-label="Ana menü">←</button>
+<a class="logo" href="#" onclick="go('home');return false">OYUN<b>OYNA</b><small>.COM</small></a>
+<span id="conn" class="pill hidden"></span>
+</header>
+<main>
+<section class="view active" id="v-home">
+<div class="hero">
+<h1>Oyna. Yarış. Eğlen.</h1>
+<p>Kayıt yok, indirme yok. Kodu gönder, arkadaşınla farklı telefonlardan oyna.</p>
+<button class="btn primary big" onclick="openLobby('xox')">🌐 Arkadaşınla Online Oyna</button>
+</div>
+<h2 class="sec">Oyunlar</h2>
+<div class="grid">
+<button class="card c-xox" id="cardXox"><span class="ico">❌⭕</span><b>XOX</b><small>Bilgisayara karşı, aynı telefonda veya online</small></button>
+<button class="card c-race" id="cardRace"><span class="ico">🏎️</span><b>Araba Yarışı</b><small>2 kişilik · engelleri geç, ilk bitiren kazanır</small></button>
+</div>
+<h2 class="sec">Mini Oyunlar</h2>
+<div class="grid">
+<button class="card c-mem" onclick="go('memory');Memory.init()"><span class="ico">🧠</span><b>Hafıza Kartları</b><small>Çiftleri bul</small></button>
+<button class="card c-ref" onclick="go('reflex');Reflex.init()"><span class="ico">⚡</span><b>Refleks Testi</b><small>Ne kadar hızlısın?</small></button>
+<button class="card c-cps" onclick="go('cps');Cps.init()"><span class="ico">👆</span><b>Tıklama Hızı</b><small>10 saniyede kaç tık?</small></button>
+<div class="card soon"><span class="ico">🎲</span><b>Yakında…</b><small>Yeni oyunlar geliyor</small></div>
+</div>
+<footer>© OYUNOYNA.COM · Tüm hakları saklıdır</footer>
+</section>
+<section class="view" id="v-lobby">
+<div class="panel">
+<h2>🌐 Online Oda</h2>
+<p class="muted">Oyunu seç, oda kur, kodu veya linki arkadaşına gönder.</p>
+<div class="seg" id="lobbyGame">
+<button data-g="xox" class="on">❌⭕ XOX</button>
+<button data-g="race">🏎️ Yarış</button>
+</div>
+<button id="createRoom" class="btn primary wide">Oda Kur</button>
+<div id="roomBox" class="roombox hidden">
+<div class="muted">Oda kodu</div>
+<div id="roomCode" class="code">-----</div>
+<div class="row">
+<button id="copyLink" class="btn">🔗 Linki Kopyala</button>
+<button id="shareBtn" class="btn">📤 Paylaş</button>
+</div>
+<p id="roomState" class="muted">Arkadaşın bekleniyor…</p>
+</div>
+<div class="divider"><span>veya odaya katıl</span></div>
+<input id="joinCode" maxlength="5" placeholder="KOD" autocapitalize="characters" autocomplete="off" spellcheck="false">
+<button id="joinBtn" class="btn wide">Odaya Katıl</button>
+<p id="joinState" class="muted"></p>
+</div>
+</section>
+<section class="view" id="v-xox">
+<div class="score">
+<div class="sc x" id="sX"></div>
+<div class="sc d" id="sD"></div>
+<div class="sc o" id="sO"></div>
+</div>
+<div id="xoxStatus" class="status"></div>
+<div id="board" class="board"></div>
+<div class="row center"><button id="xoxAgain" class="btn primary">Yeni Tur</button></div>
+</section>
+<section class="view" id="v-race">
+<div id="raceStage" class="race-stage"></div>
+<div id="raceCtl" class="race-ctl"></div>
+</section>
+<section class="view" id="v-memory">
+<div class="panel">
+<h2>🧠 Hafıza Kartları</h2>
+<div id="memHud" class="muted"></div>
+<div id="memGrid" class="memgrid"></div>
+<p id="memMsg" class="status"></p>
+<button class="btn wide" onclick="Memory.init()">🔁 Yeniden Başlat</button>
+</div>
+</section>
+<section class="view" id="v-reflex">
+<div class="panel">
+<h2>⚡ Refleks Testi</h2>
+<div id="reflexPad" class="pad"></div>
+</div>
+</section>
+<section class="view" id="v-cps">
+<div class="panel">
+<h2>👆 Tıklama Hızı</h2>
+<div id="cpsHud" class="muted"></div>
+<button id="cpsBtn" class="cpsbtn">TIKLA!</button>
+<p id="cpsMsg" class="status"></p>
+<button class="btn wide" onclick="Cps.init()">🔁 Tekrar</button>
+</div>
+</section>
+</main>
+<div id="modal" class="modal hidden">
+<div class="sheet">
+<h3 id="mTitle"></h3>
+<div id="mBtns"></div>
+<button class="btn ghost wide" id="mClose">Vazgeç</button>
+</div>
+</div>
+<div id="toast"></div>
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
